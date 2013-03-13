@@ -1,4 +1,7 @@
 Ph4tdsite::Application.routes.draw do
+  resources :users
+
+
   get "welcome/index"
 
   resources :trips
