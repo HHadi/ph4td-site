@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ph4tdsite</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+  <meta name="vieport" content="width=device-width, intial-scale=1.0">
+</head>
+<body>
+
+<div class="navbar">
+  <div class="navbar-inner">
+  <a class="brand" href="#">DigiTripDiary</a>
+  <ul class="nav">
+  <li class="active"><a href="#">Home</a></li>
+  <li><a href="#">Sign Up</a></li>
+  <li><a href="#">About DigiTripDiary </a></li>
+  </ul>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="span9"><%= yield %></div>
+    <div class="span3">
+      <h2> Rails + Twitter Bootstrap!</h2>
+      This seems pretty darn sweet.
+    </div>
+  </div>
+</div>
+</body>
+</html>
