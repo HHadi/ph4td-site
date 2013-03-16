@@ -1,11 +1,11 @@
 Ph4tdsite::Application.routes.draw do
+  resources :trips
+
+
   resources :users
 
 
   get "welcome/index"
-
-  resources :trips
-
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

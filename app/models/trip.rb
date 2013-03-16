@@ -1,3 +1,4 @@
 class Trip < ActiveRecord::Base
-  attr_accessible :name
+  attr_accessible :description, :userid
+  validates :description, :length => { :maximum => 10 } 
 end
