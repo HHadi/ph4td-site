@@ -2,8 +2,8 @@
 
 one:
   description: MyString
-  userid: 1
+  user_id: 1
 
 two:
   description: MyString
-  userid: 1
+  user_id: 1
