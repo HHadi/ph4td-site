@@ -1,4 +1,6 @@
 Ph4tdsite::Application.routes.draw do
+  get "about/index"
+
   resources :trips
 
 
