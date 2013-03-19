@@ -11,6 +11,12 @@
       <%= f.text_field :email, :class => 'text_field' %>
     </div>
   </div>
+  <div class="control-group">
+    <%= f.label :password_digest, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :password_digest, :class => 'text_field' %>
+    </div>
+  </div>
 
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>

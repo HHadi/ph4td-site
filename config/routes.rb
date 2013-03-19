@@ -1,13 +1,12 @@
 Ph4tdsite::Application.routes.draw do
-  get "about/index"
 
   resources :trips
-
-
   resources :users
+  
+  match '/about', to: 'about#index'
+  match '/signup', to: 'users#new' 
 
-
-  get "welcome/index"
+  match '/welcome', to: "welcome#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
