@@ -15,18 +15,18 @@
   <div class="control-group">
     <%= f.label :password, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :password, :class => 'text_field' %>
+      <%= f.password_field :password, :class => 'text_field' %>
     </div>
   </div>
   
   <div class="control-group">
-    <%= f.label :password_confirmation, :class => 'control-label' %>
+    <%= f.label 'Confirmation', :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :password_confirmation, :class => 'text_field' %>
+      <%= f.password_field :password_confirmation, :class => 'text_field' %>
     </div>
   </div>
 
   <div class="form-actions">
     <%= f.submit "Create my account", class: "btn btn-large btn-primary" %>
+    <% end %>
   </div>
-<% end %>
