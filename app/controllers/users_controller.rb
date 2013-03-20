@@ -73,11 +73,11 @@ class UsersController < ApplicationController
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
-    @user = User.find(params[:id])
-    @user.destroy
+    @user = User.find(params[:id]).destroy
 
     respond_to do |format|
-      format.html { redirect_to users_url }
+      format.html { redirect_to users_url, 
+      notice: "{@user.name} has been deleted" }
       format.json { head :no_content }
     end
   end
@@ -93,6 +93,10 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
       redirect_to root_path, notice: 
       "That isn't allowed!" unless current_user?(@user)
+    end
+
+    def admin_user
+      redirect_to(root_path) unless current_user.admin?
     end
 
 end
