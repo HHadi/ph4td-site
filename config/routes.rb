@@ -2,10 +2,12 @@ Ph4tdsite::Application.routes.draw do
 
   resources :trips
   resources :users
-  
+  resources :sessions, only: [:new, :create, :destroy]
+
   match '/about', to: 'about#index'
   match '/signup', to: 'users#new' 
-
+  match '/signin', to: 'sessions#new'
+  match '/signout', to: 'sessions#destroy', via: :delete
   match '/welcome', to: "welcome#index"
 
   # The priority is based upon order of creation:
