@@ -29,3 +29,16 @@ aside {
   float: left;
   margin-right: 10px;
 }
+
+.users {
+  list-style: none;
+  margin: 0;
+  li {
+    overflow: auto;
+    padding: 10px 0;
+    border-top: 2px solid $blue;
+    &:last-child {
+      border-bottom: 2px solid $blue;
+    }
+  }
+}
