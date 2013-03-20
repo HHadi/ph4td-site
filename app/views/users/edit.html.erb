@@ -1,5 +1,8 @@
 <%- model_class = User -%>
+<% provide(:title, "Profile Edit") %>
 <div class="page-header">
-  <h1><%=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => model_class.model_name.human %></h1>
+  <h1>Update your profile</h1>
 </div>
-<%= render :partial => 'form' %>
+<%= render :partial => 'eform' %>
+<%= gravatar_for @user %>
+<a href ="http://gravatar.com/emails" class="btn" >Change Gravatar</a>
