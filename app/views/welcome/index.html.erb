@@ -1,3 +1,31 @@
 <% provide(:title, "Home") %>
-<h1>Welcome to DigiTD </h1>
-<p> We are currently under construction </p>
+
+
+
+
+<% if signed_in? %>
+  <div class="row">
+    <aside class="span4">
+      <section>
+        <%= render 'shared/user_info' %>
+      </section>
+      <section>
+        <%= render 'shared/trip_form' %>
+      </section>
+    </aside>
+  </div>  
+<% else %>
+  <div class="hero-unit">
+    <h1>Welcome to DigiTD</h1>
+  </div>
+
+    <h2>
+      This is the home page for the Digital Trip Diary
+    </h2>
+
+    <%= link_to "Sign up now!", signup_path, 
+                                class: "btn btn-large"  %>
+  </div>
+
+<% end %> 
+

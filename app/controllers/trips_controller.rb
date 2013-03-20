@@ -1,6 +1,7 @@
 class TripsController < ApplicationController
   # GET /trips
   # GET /trips.json
+  before_filter :signed_in_user, only: [:create, :destroy]
   def index
     @trips = Trip.all
 
@@ -40,14 +41,16 @@ class TripsController < ApplicationController
   # POST /trips
   # POST /trips.json
   def create
-    @trip = Trip.new(params[:trip])
+    @trip = current_user.trips.build(params[:trip])
 
     respond_to do |format|
       if @trip.save
-        format.html { redirect_to @trip, notice: 'Trip was successfully created.' }
+        format.html { redirect_to root_url, 
+        notice: 'Trip successfully created.' }
         format.json { render json: @trip, status: :created, location: @trip }
       else
-        format.html { render action: "new" }
+        format.html { redirect_to root_url, 
+        notice: 'Trip not created!' }
         format.json { render json: @trip.errors, status: :unprocessable_entity }
       end
     end
