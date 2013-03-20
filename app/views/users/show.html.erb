@@ -9,4 +9,14 @@
       </h1>
     </section>
   </aside>
+
+  <div class="span8">
+    <% if @user.trips.any? %>
+      <h3>Trip Descriptions (<%= @user.trips.count %>)</h3>
+      <ol class="microposts">
+        <%= render @trips %>
+      </ol>
+      <%= will_paginate @trips %>
+    <% end %>  
+  </div>
 </div>
