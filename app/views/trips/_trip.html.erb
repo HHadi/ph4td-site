@@ -3,4 +3,10 @@
   <span class="timestamp">
     Posted <%= time_ago_in_words(trip.created_at) %> ago.
   </span>
+ 
+  <% if current_user?(trip.user) %>
+    <%= link_to "delete", trip, method: :delete,
+                                     data: { confirm: "You sure?" },
+                                     title: trip.description %>
+  <% end %>
 </li>

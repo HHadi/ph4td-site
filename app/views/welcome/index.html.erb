@@ -1,8 +1,6 @@
 <% provide(:title, "Home") %>
 
 
-
-
 <% if signed_in? %>
   <div class="row">
     <aside class="span4">
@@ -13,7 +11,12 @@
         <%= render 'shared/trip_form' %>
       </section>
     </aside>
-  </div>  
+
+    <div class="span8">
+      <h3>Trip Wall</h3>
+      <%= render 'shared/feed' %>
+    </div>
+  </div>
 <% else %>
   <div class="hero-unit">
     <h1>Welcome to DigiTD</h1>

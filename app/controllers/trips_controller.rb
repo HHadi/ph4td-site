@@ -2,6 +2,8 @@ class TripsController < ApplicationController
   # GET /trips
   # GET /trips.json
   before_filter :signed_in_user, only: [:create, :destroy]
+  before_filter :correct_user, only: :destroy
+
   def index
     @trips = Trip.all
 
@@ -49,6 +51,7 @@ class TripsController < ApplicationController
         notice: 'Trip successfully created.' }
         format.json { render json: @trip, status: :created, location: @trip }
       else
+        @feed_items = []
         format.html { redirect_to root_url, 
         notice: 'Trip not created!' }
         format.json { render json: @trip.errors, status: :unprocessable_entity }
@@ -75,12 +78,19 @@ class TripsController < ApplicationController
   # DELETE /trips/1
   # DELETE /trips/1.json
   def destroy
-    @trip = Trip.find(params[:id])
     @trip.destroy
 
     respond_to do |format|
-      format.html { redirect_to trips_url }
+      format.html { redirect_to root_url, 
+      notice: 'Trip Successfully Deleted' }
       format.json { head :no_content }
     end
   end
+
+  private
+
+    def correct_user
+      @trip = current_user.trips.find_by_id(params[:id])
+      redirect_to root_url if @trip.nil?
+    end
 end
