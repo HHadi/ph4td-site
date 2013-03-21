@@ -1,11 +1,11 @@
 class User < ActiveRecord::Base
   attr_accessible :email, :name, :password, :password_confirmation
   has_many :trips, dependent: :destroy
-  has_many :followers, foreign_key: "follower_id", dependent: :destroy
-  has_many :followed_users, through: :followers, source: :followed
-  has_many :reverse_followers, foreign_key: "followed_id",
-           class_name: "Follower", dependent: :destroy
-  has_many :followers, through: :reverse_followers, source: :follower
+  has_many :relationships, foreign_key: "follower_id", dependent: :destroy
+  has_many :followed_users, through: :relationships, source: :followed
+  has_many :reverse_relationships, foreign_key: "followed_id",
+           class_name: "Relationship", dependent: :destroy
+  has_many :followers, through: :reverse_relationships, source: :follower
   has_secure_password
 
   before_save { |user| user.email = email.downcase } 
@@ -22,15 +22,15 @@ class User < ActiveRecord::Base
   end
 
   def following?(other_user)
-    followers.find_by_followed_id(other_user.id)
+    relationships.find_by_followed_id(other_user.id)
   end
 
   def follow!(other_user)
-    followers.create!(followed_id: other_user.id)
+    relationships.create!(followed_id: other_user.id)
   end
   
-  def following?(other_user)
-    followers.find_by_followed_id(other_user.id).destroy
+  def unfollow!(other_user)
+    relationships.find_by_followed_id(other_user.id).destroy
   end
 
   private
