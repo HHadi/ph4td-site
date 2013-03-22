@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
   validates :password_confirmation, presence: true
   
   def feed
-    Trip.where("user_id = ?", id)
+    Trip.from_users_followed_by(self)
   end
 
   def following?(other_user)
