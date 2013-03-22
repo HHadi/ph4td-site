@@ -8,6 +8,7 @@ Ph4tdsite::Application.routes.draw do
 
   resources :sessions, only: [:new, :create, :destroy]
   resources :trips, only: [:create, :destroy]
+  resources :relationships, only: [:create, :destroy]
 
   match '/about', to: 'about#index'
   match '/signup', to: 'users#new' 

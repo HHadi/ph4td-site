@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
   # GET /users
   # GET /users.json
-  before_filter :signed_in_user, only: [:index, :edit, :update]
+  before_filter :signed_in_user, only: [:index, :edit, :update, 
+    :destroy, :following, :followers]
   before_filter :correct_user, only: [:edit, :update]
   def index
     @users = User.paginate(page: params[:page])
@@ -82,7 +83,21 @@ class UsersController < ApplicationController
       format.json { head :no_content }
     end
   end
-  
+
+  def following
+    @title = "Following"
+    @user = User.find(params[:id])
+    @users = @user.followed_users.paginate(page: params[:page])
+    render 'show_follow'
+  end
+
+  def followers
+    @title = "Followers"
+    @user = User.find(params[:id])
+    @users = @user.followers.paginate(page: params[:page])
+    render 'show_follow'
+  end
+ 
   private
     
     def correct_user 
