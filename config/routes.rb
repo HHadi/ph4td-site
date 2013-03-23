@@ -17,8 +17,8 @@ Ph4tdsite::Application.routes.draw do
   match '/signup', to: 'users#new' 
   match '/signin', to: 'sessions#new'
   match '/signout', to: 'sessions#destroy', via: :delete
-  match '/welcome', to: "welcome#index"
-
+  match '/welcome', to: 'welcome#index'
+  match '/photos', to: 'photos#index'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
