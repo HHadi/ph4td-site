@@ -1,8 +1,9 @@
 class Trip < ActiveRecord::Base
   attr_accessible :description
   
+  has_many :photos, dependent: :destroy
   belongs_to :user
-  
+   
   validates :description, presence: true, :length => { :maximum => 140 }
   validates :user_id, presence: true
   
