@@ -1,5 +1,8 @@
 Ph4tdsite::Application.routes.draw do
 
+  resources :photos
+
+
   resources :users do
     member do
       get :following, :followers
