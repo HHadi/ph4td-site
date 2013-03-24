@@ -3,7 +3,8 @@ class Trip < ActiveRecord::Base
   
   has_many :photos, dependent: :destroy
   belongs_to :user
-   
+  
+  accepts_nested_attributes_for :photos
   validates :description, presence: true, :length => { :maximum => 140 }
   validates :user_id, presence: true
   

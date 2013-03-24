@@ -44,7 +44,6 @@ class TripsController < ApplicationController
   # POST /trips.json
   def create
     @trip = current_user.trips.build(params[:trip])
-
     respond_to do |format|
       if @trip.save
         format.html { redirect_to root_url, 

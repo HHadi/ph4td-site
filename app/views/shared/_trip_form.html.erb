@@ -3,6 +3,52 @@
   <div class="field">
     <%= f.text_area :description, placeholder: "Compose new trip..." %>
   </div>
+  
+  <%= form_for @photo, html: {multipart: true} do |f| %>
+  <% if @photo.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@photo.errors.count, "error") %> prohibited this photo from being saved:</h2>
+
+      <ul>
+      <% @photo.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :url %><br />
+    <%= f.text_field :url %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
+  </div>
+  <div class="field">
+    <%= f.label :lat %><br />
+    <%= f.text_field :lat %>
+  </div>
+  <div class="field">
+    <%= f.label :lng %><br />
+    <%= f.text_field :lng %>
+  </div>
+  <div>
+    <label> <% @photo.image %> </label>
+    <%= image_tag(@photo.image_url(:thumb)) if @photo.image? %>
+    <%=f.file_field :image %>
+  </div>
+  <div>
+    <label>
+      <%= f.check_box :remove_image %>
+      Remove Photo
+    </label>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+  <% end %>
+  
+  
   <%= f.submit "Create Trip", class: "btn btn-large btn-primary" %>
 <% end %>
 
