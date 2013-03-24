@@ -13,6 +13,7 @@ gem 'will_paginate', '3.0.3'
 gem 'bootstrap-will_paginate', '0.0.6'
 gem 'carrierwave'
 gem 'fog', '1.3.1'
+gem "rmagick"
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

@@ -27,10 +27,17 @@
     <%= f.label :lng %><br />
     <%= f.text_field :lng %>
   </div>
+  <div>
+    <label> <% @photo.image %> </label>
+    <%= image_tag(@photo.image_url(:thumb)) if @photo.image? %>
+    <%=f.file_field :image %>
+  </div>
+  <div>
+    <label>
+      <%= f.check_box :remove_image %>
+      Remove Photo
+    </label>
   <div class="actions">
     <%= f.submit %>
   </div>
-  <div>
-    <%=f.file_field :image %>
-  </div>
-<% end %>
+  <% end %>
